@@ -1,0 +1,1125 @@
+#suite s21_base_math
+
+#test mul_1
+int error = 0;
+int a = 0;
+int b = 0;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_mul(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test mul_2
+int error = 0;
+int a = 0;
+int b = 1;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_mul(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test mul_3
+int error = 0;
+int a = 1;
+int b = 0;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_mul(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test mul_4
+int error = 0;
+int a = 365;
+int b = 9876;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_mul(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 3604740);
+ck_assert_int_eq(error, 0);
+
+#test mul_5
+int error = 0;
+int a = -365;
+int b = -9876;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_mul(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 3604740);
+ck_assert_int_eq(error, 0);
+
+#test mul_6
+int error = 0;
+int a = -365;
+int b = 9876;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_mul(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -3604740);
+ck_assert_int_eq(error, 0);
+
+#test mul_7
+int error = 0;
+int a = 365;
+int b = -9876;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_mul(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -3604740);
+ck_assert_int_eq(error, 0);
+
+#test add_1
+int error = 0;
+int a = 0;
+int b = 0;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test add_2
+int error = 0;
+int a = 0;
+int b = 5;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 5);
+ck_assert_int_eq(error, 0);
+
+#test add_3
+int error = 0;
+int a = 5;
+int b = 0;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 5);
+ck_assert_int_eq(error, 0);
+
+#test add_4
+int error = 0;
+int a = -55;
+int b = 38;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -17);
+ck_assert_int_eq(error, 0);
+
+#test add_5
+int error = 0;
+int a = 55;
+int b = 38;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 93);
+ck_assert_int_eq(error, 0);
+
+#test add_6
+int error = 0;
+int a = 55;
+int b = -38;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 17);
+ck_assert_int_eq(error, 0);
+
+#test add_7
+int error = 0;
+int a = -38;
+int b = 55;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 17);
+ck_assert_int_eq(error, 0);
+
+#test add_8
+int error = 0;
+int a = -38;
+int b = -55;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -93);
+ck_assert_int_eq(error, 0);
+
+#test add_9
+int error = 0;
+int a = 38;
+int b = -55;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -17);
+ck_assert_int_eq(error, 0);
+
+#test add_10
+int error = 0;
+int a = 2147483647;
+int b = -1;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 2147483646);
+ck_assert_int_eq(error, 0);
+
+#test add_11
+int error = 0;
+int a = 2147483640;
+int b = 7;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 2147483647);
+ck_assert_int_eq(error, 0);
+
+#test add_12
+int error = 0;
+int a = -2147483648;
+int b = 1;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -2147483647);
+ck_assert_int_eq(error, 0);
+
+#test add_13
+int error = 0;
+int a = -2147483640;
+int b = -8;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -2147483648);
+ck_assert_int_eq(error, 0);
+
+#test add_14
+int error = 0;
+int a = -2147483648;
+int b = 2147483647;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_add(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -1);
+ck_assert_int_eq(error, 0);
+
+#test sub_1
+int error = 0;
+int a = 0;
+int b = 0;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test sub_2
+int error = 0;
+int a = 0;
+int b = 5;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -5);
+ck_assert_int_eq(error, 0);
+
+#test sub_3
+int error = 0;
+int a = 5;
+int b = 0;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 5);
+ck_assert_int_eq(error, 0);
+
+#test sub_4
+int error = 0;
+int a = 55;
+int b = 38;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 17);
+ck_assert_int_eq(error, 0);
+
+#test sub_5
+int error = 0;
+int a = -55;
+int b = -38;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -17);
+ck_assert_int_eq(error, 0);
+
+#test sub_6
+int error = 0;
+int a = 38;
+int b = 55;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -17);
+ck_assert_int_eq(error, 0);
+
+#test sub_7
+int error = 0;
+int a = -38;
+int b = -55;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 17);
+ck_assert_int_eq(error, 0);
+
+#test sub_8
+int error = 0;
+int a = 55;
+int b = -38;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 93);
+ck_assert_int_eq(error, 0);
+
+#test sub_9
+int error = 0;
+int a = -38;
+int b = 55;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -93);
+ck_assert_int_eq(error, 0);
+
+#test sub_10
+int error = 0;
+int a = -55;
+int b = 38;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -93);
+ck_assert_int_eq(error, 0);
+
+#test sub_11
+int error = 0;
+int a = 38;
+int b = -55;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 93);
+ck_assert_int_eq(error, 0);
+
+#test sub_12
+int error = 0;
+int a = -2147483648;
+int b = -2147483647;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -1);
+ck_assert_int_eq(error, 0);
+
+#test sub_13
+int error = 0;
+int a = 2147483647;
+int b = 2147483646;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 1);
+ck_assert_int_eq(error, 0);
+
+#test sub_14
+int error = 0;
+int a = 2147483640;
+int b = -7;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 2147483647);
+ck_assert_int_eq(error, 0);
+
+#test sub_15
+int error = 0;
+int a = -2147483640;
+int b = 8;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_sub(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -2147483648);
+ck_assert_int_eq(error, 0);
+
+#test div_1
+int error = 0;
+int a = 15;
+int b = 5;
+s21_decimal a_dec;
+s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+int res = 0;
+s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 3);
+ck_assert_int_eq(error, 0);
+
+#test div_2
+int error = 0;
+int a = 15;
+int b = -5;
+s21_decimal a_dec;
+s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+int res = 0;
+s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -3);
+ck_assert_int_eq(error, 0);
+
+#test div_3
+int error = 0;
+int a = -15;
+int b = 5;
+s21_decimal a_dec;
+s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+int res = 0;
+s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -3);
+ck_assert_int_eq(error, 0);
+
+#test div_4
+int error = 0;
+int a = -15;
+int b = -5;
+s21_decimal a_dec;
+s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+int res = 0;
+s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 3);
+ck_assert_int_eq(error, 0);
+
+#test div_5
+int error = 0;
+int a = 0;
+int b = 0;
+s21_decimal a_dec;
+s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+int res = 0;
+s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 3);
+
+#test div_6
+int error = 0;
+int a = 5;
+int b = 0;
+s21_decimal a_dec;
+s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+ck_assert_int_eq(error, 3);
+
+#test div_7
+int error = 0;
+int a = 0;
+int b = 5;
+s21_decimal a_dec;
+s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+int res = 0;
+s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test div_8
+int error = 0;
+int a = 15;
+int b = 4;
+s21_decimal a_dec;
+s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+float res = 0;
+s21_from_decimal_to_float(res_dec, &res);
+ck_assert_float_eq(res, 3.75);
+ck_assert_int_eq(error, 0);
+
+#test div_9
+int error = 0;
+int a = 15;
+int b = -4;
+s21_decimal a_dec;
+s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+float res = 0;
+s21_from_decimal_to_float(res_dec, &res);
+ck_assert_float_eq(res, -3.75);
+ck_assert_int_eq(error, 0);
+
+#test div_10
+int error = 0;
+int a = 5;
+int b = -25;
+s21_decimal a_dec;
+s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+float res = 0;
+s21_from_decimal_to_float(res_dec, &res);
+ck_assert_float_eq(res, -0.2);
+ck_assert_int_eq(error, 0);
+
+#test div_11
+int error = 0;
+int a = -144;
+int b = -12;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 12);
+ck_assert_int_eq(error, 0);
+
+#test div_12
+int error = 0;
+int a = 2147483647;
+int b = 0;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+int res = 0;
+s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 3);
+
+#test div_13
+int error = 0;
+int a = 2147483647;
+int b = -1;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, -2147483647);
+ck_assert_int_eq(error, 0);
+
+#test div_14
+int error = 0;
+int a = 0;
+int b = -2147483648;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+int res = 0;
+error = s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test div_15
+int error = 0;
+int a = -2147483648;
+int b = 0;
+s21_decimal a_dec;
+error = s21_from_int_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_int_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+int res = 0;
+s21_from_decimal_to_int(res_dec, &res);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 3);
+
+#test div_16
+int error = 0;
+float a = 12;
+float b = 4;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+float res = 0;
+error = s21_from_decimal_to_float(res_dec, &res);
+ck_assert_float_eq(res, 3);
+ck_assert_int_eq(error, 0);
+
+#test div_17
+int error = 0;
+float a = -2147483648;
+float b = 2147483648;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+float res = 0;
+error = s21_from_decimal_to_float(res_dec, &res);
+ck_assert_float_eq(res, -1);
+ck_assert_int_eq(error, 0);
+
+#test div_18
+int error = 0;
+float a = 12;
+float b = 0;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+ck_assert_int_eq(error, 3);
+
+#test div_19
+int error = 0;
+float a = -12;
+float b = 3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+float res = 0;
+error = s21_from_decimal_to_float(res_dec, &res);
+ck_assert_float_eq(res, -4);
+ck_assert_int_eq(error, 0);
+
+#test div_20
+int error = 0;
+float a = 1.2;
+float b = 0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+float res = 0;
+error = s21_from_decimal_to_float(res_dec, &res);
+ck_assert_float_eq(res, 4);
+ck_assert_int_eq(error, 0);
+
+#test div_21
+int error = 0;
+float a = -12;
+float b = 3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+float res = 0;
+error = s21_from_decimal_to_float(res_dec, &res);
+ck_assert_float_eq(res, -4);
+ck_assert_int_eq(error, 0);
+
+#test div_22
+int error = 0;
+float a = 1.2;
+float b = 0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+s21_decimal res_dec;
+error = s21_div(a_dec, b_dec, &res_dec);
+float res = 0;
+error = s21_from_decimal_to_float(res_dec, &res);
+ck_assert_float_eq(res, 4);
+ck_assert_int_eq(error, 0);
+
+#test greater_1
+int error = 0;
+float a = 1.2;
+float b = 0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_greater(a_dec, b_dec);
+ck_assert_int_eq(res, 1);
+ck_assert_int_eq(error, 0);
+
+#test greater_2
+int error = 0;
+float a = -1.2;
+float b = 0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_greater(a_dec, b_dec);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test greater_3
+int error = 0;
+float a = -1.2;
+float b = -0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_greater(a_dec, b_dec);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test greater_4
+int error = 0;
+float a = 0;
+float b = 0;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_greater(a_dec, b_dec);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test greater_or_equal_1
+int error = 0;
+float a = 1.2;
+float b = 0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_greater_or_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 1);
+ck_assert_int_eq(error, 0);
+
+#test greater_or_equal_2
+int error = 0;
+float a = 1.2;
+float b = 1.2;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_greater_or_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 1);
+ck_assert_int_eq(error, 0);
+
+#test greater_or_equal_3
+int error = 0;
+float a = -1.2;
+float b = 1.2;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_greater_or_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test greater_or_equal_4
+int error = 0;
+float a = -1.2;
+float b = -1.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_greater_or_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 1);
+ck_assert_int_eq(error, 0);
+
+#test less_1
+int error = 0;
+float a = 1.2;
+float b = 0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_less(a_dec, b_dec);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test less_2
+int error = 0;
+float a = -1.2;
+float b = 0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_less(a_dec, b_dec);
+ck_assert_int_eq(res, 1);
+ck_assert_int_eq(error, 0);
+
+#test less_3
+int error = 0;
+float a = -0.3;
+float b = -0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_less(a_dec, b_dec);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test less_4
+int error = 0;
+float a = 0;
+float b = -0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_less(a_dec, b_dec);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test less_or_equal_1
+int error = 0;
+float a = 1.2;
+float b = 0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_less_or_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test less_or_equal_2
+int error = 0;
+float a = 1.2;
+float b = 1.2;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_less_or_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 1);
+ck_assert_int_eq(error, 0);
+
+#test less_or_equal_3
+int error = 0;
+float a = -1.2;
+float b = 1.2;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_less_or_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 1);
+ck_assert_int_eq(error, 0);
+
+#test less_or_equal_4
+int error = 0;
+float a = 0;
+float b = 0;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_less_or_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 1);
+ck_assert_int_eq(error, 0);
+
+#test is_not_equal_1
+int error = 0;
+float a = 1.2;
+float b = 0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_not_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 1);
+ck_assert_int_eq(error, 0);
+
+#test is_not_equal_2
+int error = 0;
+float a = 1.2;
+float b = -1.2;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_not_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 1);
+ck_assert_int_eq(error, 0);
+
+#test is_not_equal_3
+int error = 0;
+float a = 0;
+float b = 0;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_not_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);
+
+#test is_not_equal_4
+int error = 0;
+float a = -0.3;
+float b = -0.3;
+s21_decimal a_dec;
+error = s21_from_float_to_decimal(a, &a_dec);
+s21_decimal b_dec;
+error = s21_from_float_to_decimal(b, &b_dec);
+int res = 0;
+res = s21_is_not_equal(a_dec, b_dec);
+ck_assert_int_eq(res, 0);
+ck_assert_int_eq(error, 0);

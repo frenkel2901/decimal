@@ -1,0 +1,160 @@
+#test s21_div_extra_1
+  s21_decimal val1 = {{2, 0, 0, ~(INT32_MAX / 2)}};
+  s21_decimal val2 = {{2, 0, 0, 0}};
+  s21_decimal res = {{0}};
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+
+#test s21_div_extra_2
+  s21_decimal val1 = {{2, 0, 0, 0}};
+  s21_decimal val2 = {{2, 0, 0, ~(INT32_MAX / 2)}};
+  s21_decimal res = {{0}};
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+
+#test s21_div_extra_3
+  s21_decimal val1 = {{2, 0, 0, ~(INT32_MAX / 2)}};
+  s21_decimal val2 = {{2, 0, 0, ~(INT32_MAX / 2)}};
+  s21_decimal res = {{0}};
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+
+#test s21_div_extra_4
+  s21_decimal val1 = {{2, 0, 0, ~(INT32_MAX / 2)}};
+  s21_decimal val2 = {{0, 0, 0, 0}};
+  s21_decimal res = {{0}};
+  ck_assert_int_eq(3, s21_div(val1, val2, &res));
+
+#test s21_div_extra_5
+  s21_decimal val1 = {{411601037, 3190096481, 685266662,
+                       0x001C0000}};  // sign bit= 0 exponent= -28
+  // 1.2640938749860586450804312205
+  s21_decimal val2 = {{2, 0, 0, 0x00000000}};  // sign bit= 0 exponent= 0
+  // 2
+  s21_decimal res;
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+  ck_assert_int_eq(res.bits[0], 2353284166);
+  ck_assert_int_eq(res.bits[1], 1595048240);
+  ck_assert_int_eq(res.bits[2], 342633331);
+  ck_assert_uint_eq(res.bits[3], 1835008);  // sign bit= 0 exponent= -28
+  // 0.6320469374930293225402156102
+
+#test s21_div_extra_6
+  s21_decimal number1 = {{864192, 0, 0, 0x00030000}};
+  s21_decimal number2 = {{7, 0, 0, 0x00000000}};
+  s21_decimal res;
+
+  ck_assert_int_eq(0, s21_div(number1, number2, &res));
+  ck_assert_int_eq(res.bits[0], 123456);
+  ck_assert_int_eq(res.bits[1], 0);
+  ck_assert_int_eq(res.bits[2], 0);
+  ck_assert_int_eq(res.bits[3], 196608);
+
+#test s21_div_extra_7
+  s21_decimal val1 = {{15, 15, 15, 0x000F0000}};
+  s21_decimal val2 = {{10, 0, 0, 0x00000000}};
+  s21_decimal res;
+  s21_decimal test_value = {{15, 15, 15, 1048576}};
+
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+  int x = s21_is_equal(res, test_value);
+  ck_assert_int_eq(x, 1);
+  ck_assert_int_eq(res.bits[1], 15);
+  ck_assert_int_eq(res.bits[2], 15);
+  ck_assert_int_eq(res.bits[3], 1048576);
+
+#test s21_div_extra_8
+  //   Десятичное значение:
+  // 1455448107611534131.2123
+  s21_decimal val1 = {{0x7B, 0x1C8, 0x315, 0x00040000}};
+  //   Десятичное значение:
+  // 184467440780045.18913
+  s21_decimal val2 = {{0x1, 0x1, 0x1, 0x00050000}};
+  s21_decimal res;
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+
+  ck_assert_int_eq(res.bits[0], 405681253);
+  ck_assert_int_eq(res.bits[1], 150366383);
+  ck_assert_int_eq(res.bits[2], 4277177570);
+  ck_assert_int_eq(res.bits[3], 1638400);
+
+#test s21_div_extra_9
+  s21_decimal val1 = {{2, 0, 0, 0x00000000}};
+  s21_decimal val2 = {{5, 0, 0, 0x001C0000}};
+  s21_decimal res;
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+  ck_assert_int_eq(res.bits[0], 2684354560);
+  ck_assert_int_eq(res.bits[1], 2135032051);
+  ck_assert_int_eq(res.bits[2], 216840434);
+  ck_assert_int_eq(res.bits[3], 0);
+
+#test s21_div_extra_10
+  s21_decimal val1 = {{0XFFFFFFFF, 0XFFFFFFFF, 0XFFFFFFFF, 0x001C0000}};
+  s21_decimal val2 = {{0XFFFFFFFF, 0XFFFFFFFF, 0XFFFFFFFF, 0x00000000}};
+  s21_decimal res;
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+  ck_assert_int_eq(res.bits[0], 1);
+  ck_assert_int_eq(res.bits[1], 0);
+  ck_assert_int_eq(res.bits[2], 0);
+  ck_assert_int_eq(res.bits[3], 1835008);
+
+#test s21_div_extra_11
+  s21_decimal val1 = {{123, 0, 0, 0x00000000}};
+  s21_decimal val2 = {{1, 0, 0, 0x001C0000}};
+  s21_decimal res = {{0}};
+  ck_assert_int_eq(1, s21_div(val1, val2, &res));
+
+#test s21_div_extra_12
+  s21_decimal val1 = {{123, 0, 0, 0x00000000}};
+  s21_decimal val2 = {{1, 0, 0, 0x000A0000}};
+  s21_decimal res;
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+  ck_assert_int_eq(res.bits[0], 1639353344);
+  ck_assert_int_eq(res.bits[1], 286);
+  ck_assert_int_eq(res.bits[2], 0);
+  ck_assert_int_eq(res.bits[3], 0);
+
+#test s21_div_extra_13
+  //   Десятичное значение:
+  // 22689495215945558.26299
+  s21_decimal val1 = {{0x7B, 0x7B, 0x7B, 0x00050000}};
+  //   Десятичное значение:
+  // 5534023222.9718589441
+  s21_decimal val2 = {{0x1, 0x2, 0x3, 0x000A0000}};
+  s21_decimal res;
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+  ck_assert_int_eq(res.bits[0], 3942814950);
+  ck_assert_int_eq(res.bits[1], 3297597181);
+  ck_assert_int_eq(res.bits[2], 2222614453);
+  ck_assert_int_eq(res.bits[3], 1441792);
+
+#test s21_div_extra_14
+  s21_decimal val1 = {{1234567890, 0, 0, 0x00050000}};
+  s21_decimal val2 = {{0, 0, 0, 0x800A0000}};
+  s21_decimal res;
+  ck_assert_int_eq(3, s21_div(val1, val2, &res));
+
+#test s21_div_extra_15
+  s21_decimal val1 = {{387420489, 999999999, 123456789, 0x000E0000}};
+  s21_decimal val2 = {{987654321, 666666666, 888888888, 0x80190000}};
+  s21_decimal res;
+  s21_decimal test_value = {{2966737934, 2263411014, 752918170, 2148663296}};
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+  ck_assert_int_eq(1, s21_is_equal(test_value, res));
+
+#test s21_div_extra_16
+  s21_decimal val1 = {{123456, 0, 0, 0x00040000}};
+  s21_decimal val2 = {{123, 0, 0, 0x00000000}};
+  s21_decimal res;
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+  ck_assert_int_eq(res.bits[0], 1964161873);
+  ck_assert_int_eq(res.bits[1], 2944270678);
+  ck_assert_int_eq(res.bits[2], 54411082);
+  ck_assert_int_eq(res.bits[3], 1835008);
+
+#test s21_div_extra_17
+  s21_decimal val1 = {{1, 0, 0, 0x00000000}};
+  s21_decimal val2 = {{3, 0, 0, 0x00000000}};
+  s21_decimal res;
+  ck_assert_int_eq(0, s21_div(val1, val2, &res));
+  ck_assert_int_eq(res.bits[0], 89478485);
+  ck_assert_int_eq(res.bits[1], 347537611);
+  ck_assert_int_eq(res.bits[2], 180700362);
+  ck_assert_int_eq(res.bits[3], 1835008);

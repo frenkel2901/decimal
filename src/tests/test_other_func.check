@@ -1,0 +1,346 @@
+#suite s21_extra_func_test
+
+#test s21_round_1
+  s21_decimal a = {{0x9ab8b17f, 0xec91eb14, 0x3e2129ce, 0x80140000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x0b75fc1a, 0x00000000, 0x00000000, 0x80000000}};
+  int s21_ret = s21_round(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(unsigned int));
+
+#test s21_round_2
+  s21_decimal a = {{0x30d2fe4f, 0x2343de9f, 0x3e2129d7, 0x00050000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x6a7e7215, 0x9ba0147d, 0x000028b7, 0x00000000}};
+  int s21_ret = s21_round(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_round_3
+  s21_decimal a = {{0xc7df0000, 0x4a028ace, 0x4b11543e, 0x00150000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x01627f45, 0x00000000, 0x00000000, 0x00000000}};
+  int s21_ret = s21_round(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_round_4
+  s21_decimal a = {{0x57ef0000, 0x2aa64d34, 0x6ef839c0, 0x800a0000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x974109c0, 0x2fa93d6f, 0x00000000, 0x80000000}};
+  int s21_ret = s21_round(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_round_5
+  s21_decimal a = {{0xc21f0000, 0x84e3bbf7, 0x723bc2fa, 0x00090000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x2d459980, 0xeaa0fff5, 0x00000001, 0x00000000}};
+  int s21_ret = s21_round(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_round_6
+  s21_decimal a = {{0x2c4f0000, 0xdf212abb, 0x757f4c34, 0x80080000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x74082f00, 0xb677ff90, 0x00000013, 0x80000000}};
+  int s21_ret = s21_round(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_round_7
+  s21_decimal a = {{0x967f0000, 0x395e997e, 0x78c2d56f, 0x00070000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x6173b600, 0x9a7bfb83, 0x000000ca, 0x00000000}};
+  int s21_ret = s21_round(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_round_8
+  s21_decimal a = {{0x57e3f000, 0x3a7b1eb0, 0x000100ad, 0x801c0000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x00000000, 0x00000000, 0x00000000, 0x80000000}};
+  int s21_ret = s21_round(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_round_9
+  s21_decimal a = {{0xf535e9f0, 0x000e5ab9, 0x00000000, 0x801c0000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x00000000, 0x00000000, 0x00000000, 0x80000000}};
+  int s21_ret = s21_round(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_round_10
+  s21_decimal a = {{0xf535e9f0, 0x000e5ab9, 0x00000000, 0x801c0000}};
+  s21_decimal *res = NULL;
+  int s21_ret = s21_round(a, res);
+  int expected_ret = 1;
+  ck_assert_int_eq(s21_ret, expected_ret);
+
+#test s21_negate_1
+  s21_decimal a = {{0x23559a40, 0x00000002, 0x00000000, 0x800a0000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x23559a40, 0x00000002, 0x00000000, 0x000a0000}};
+  int s21_ret = s21_negate(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_negate_2
+  s21_decimal a = {{0xd6b52360, 0x00000001, 0x00000000, 0x800a0000}};
+  s21_decimal res;
+  s21_decimal expected = {{0xd6b52360, 0x00000001, 0x00000000, 0x000a0000}};
+  int s21_ret = s21_negate(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_negate_3
+  s21_decimal a = {{0x23559a40, 0x00000002, 0x00000000, 0x000a0000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x23559a40, 0x00000002, 0x00000000, 0x800a0000}};
+  int s21_ret = s21_negate(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_negate_4
+  s21_decimal a = {{0xf535e9f0, 0x000e5ab9, 0x00000000, 0x801c0000}};
+  s21_decimal *res = NULL;
+  int s21_ret = s21_negate(a, res);
+  int expected_ret = 1;
+  ck_assert_int_eq(s21_ret, expected_ret);
+
+#test s21_floor_1
+  s21_decimal a = {{0xff57162f, 0x174ff0e4, 0x3e2129cb, 0x001b0000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x00000013, 0x00000000, 0x00000000, 0x00000000}};
+  int s21_ret = s21_floor(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_floor_2
+  s21_decimal a = {{0xb8bdf40f, 0x911be896, 0x3e2129d0, 0x00110000}};
+  s21_decimal res;
+  s21_decimal expected = {{0xc4e0c68d, 0x0000002c, 0x00000000, 0x00000000}};
+  int s21_ret = s21_floor(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_floor_3
+  s21_decimal a = {{0xd6c3369f, 0x35a5e618, 0x3e2129d2, 0x800e0000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x0e0c3971, 0x0000aee1, 0x00000000, 0x80000000}};
+  int s21_ret = s21_floor(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_floor_4
+  s21_decimal a = {{0x44ff0000, 0x67732363, 0x5ea68b9c, 0x000f0000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x4accef76, 0x00001aa4, 0x00000000, 0x00000000}};
+  int s21_ret = s21_floor(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_floor_5
+  s21_decimal a = {{0x57e3f000, 0x3a7b1eb0, 0x000100ad, 0x801c0000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x00000001, 0x00000000, 0x00000000, 0x80000000}};
+  int s21_ret = s21_floor(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_floor_6
+  s21_decimal a = {{0xc21f0000, 0x84e3bbf7, 0x723bc2fa, 0x00090000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x2d459980, 0xeaa0fff5, 0x00000001, 0x00000000}};
+  int s21_ret = s21_floor(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_floor_7
+  s21_decimal a = {{0x967f0000, 0x395e997e, 0x78c2d56f, 0x00070000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x6173b600, 0x9a7bfb83, 0x000000ca, 0x00000000}};
+  int s21_ret = s21_floor(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_floor_8
+  s21_decimal a = {{0xd1281800, 0x588f9004, 0x00001787, 0x001c0000}};
+  s21_decimal res;
+  s21_decimal expected = {{0x00000000, 0x00000000, 0x00000000, 0x00000000}};
+  int s21_ret = s21_floor(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_floor_9
+  s21_decimal a = {{0xf535e9f0, 0x000e5ab9, 0x00000000, 0x801c0000}};
+  s21_decimal *res = NULL;
+  int s21_ret = s21_floor(a, res);
+  int expected_ret = 1;
+  ck_assert_int_eq(s21_ret, expected_ret);
+
+#test s21_floor_10
+  s21_decimal a = {{0x000000A, 0x00000000, 0x00000000, 0x80010000}}; // -1.0
+  s21_decimal res;
+  s21_decimal expected = {{0x00000001, 0x00000000, 0x00000000, 0x80000000}}; // -1
+  int s21_ret = s21_floor(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_floor_11
+  s21_decimal a = {{0x000000B, 0x00000000, 0x00000000, 0x80010000}}; // -1.1
+  s21_decimal res;
+  s21_decimal expected = {{0x00000002, 0x00000000, 0x00000000, 0x80000000}}; // -2
+  int s21_ret = s21_floor(a, &res);
+  int expected_ret = 0;
+  ck_assert_int_eq(s21_ret, expected_ret);
+  ck_assert_mem_eq(&expected, &res, 4 * sizeof(uint32_t));
+
+#test s21_truncate_1
+  s21_decimal arr[] = {
+    {{0x00000000, 0x00000000, 0x00000000, 0x00000000}},  // 0
+    {{0x00000001, 0x00000000, 0x00000000, 0x00000000}},  // 1
+    {{0x00000001, 0x00000000, 0x00000000, 0x80000000}},  // -1
+    {{0xCF5C048C, 0x004D2BEF, 0x00000000, 0x00070000}},  // 2172188218.2812812
+    {{0xFEADBDA2, 0x000001FB, 0x00000000, 0x80060000}},  // -2181821.218210
+    {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+      0x00000000}},  // 79228162514264337593543950335
+    {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+      0x80000000}},  // -79228162514264337593543950335
+    {{0x00000000, 0x00000000, 0x00000000, 0x00020000}},  // 0.00
+    {{0x000F4240, 0x00000000, 0x00000000, 0x00020000}},  // 10000.00
+    {{0x000F4240, 0x00000000, 0x00000000, 0x80020000}},  // -10000.00
+    {{0x00000467, 0x0000007A, 0x00000000, 0x00040000}},  // 52398601.1239
+    {{0x00000467, 0x0000007A, 0x00000000, 0x80000000}},  // -523986011239
+    {{0x00000467, 0x0000007A, 0x00003215,
+      0x00010000}},  // 23650570576955414727997.5
+    {{0x00000467, 0x0000007A, 0x00205FF0,
+      0x80020000}},  // -391386782621189641642978.31
+    {{0x000F4240, 0x00002710, 0x00002710,
+      0x80050000}},  // -1844674407800451901.20000
+    {{0x0000000E, 0x00000000, 0x00000000, 0x00000000}},  // 14
+    {{0x0000000F, 0x00000000, 0x00000000, 0x80000000}},  // -15
+    {{0x000186A0, 0x00000000, 0x00000000, 0x00000000}},  // 100000
+    {{0x0000000B, 0x00000000, 0x00000000, 0x00010000}},  // 1.1
+    {{0x0000000B, 0x00000000, 0x00000000, 0x80010000}},  // -1.1
+    {{0x0000000F, 0x00000000, 0x00000000, 0x80010000}},  // -1.5
+    {{0x0000000F, 0x00000000, 0x00000000, 0x00010000}},  // 1.5
+    {{0x00000086, 0x00000000, 0x00000000, 0x80020000}},  // -1.34
+    {{0x00000086, 0x00000000, 0x00000000, 0x00020000}},  // 1.34
+    {{0x000006E5, 0x00000000, 0x00000000, 0x00030000}},  // 1.765
+    {{0x000006E5, 0x00000000, 0x00000000, 0x80030000}},  // -1.765
+    {{0x00000019, 0x00000000, 0x00000000, 0x00010000}},  // 2.5
+    {{0x00000019, 0x00000000, 0x00000000, 0x80010000}},  // -2.5
+    {{0x1FC40A5F, 0xA98FD4BE, 0x00000000,
+      0x00020000}},  // 122182182271212611.51
+    {{0x1FC40A5D, 0xA98FD4BE, 0x00000000,
+      0x00020000}},  // 122182182271212611.49
+    {{0x1FC40A5F, 0xA98FD4BE, 0x00000000,
+      0x80020000}},  // -122182182271212611.51
+    {{0x1FC40A5D, 0xA98FD4BE, 0x00000000,
+      0x80020000}},  // -122182182271212611.49
+    {{0x075BCD15, 0x00000000, 0x00000000, 0x00030000}},  // 123456.789
+    {{0x075BCD15, 0x00000000, 0x00000000, 0x00090000}},  // 0.123456789
+    {{0x075BCD15, 0x00000000, 0x00000000, 0x00120000}},  // 0.000000000123456789
+    {{0x075BCD15, 0x00000000, 0x00000000,
+      0x001B0000}},  // 0.000000000000000000123456789
+    {{0xFFFFFFFF, 0x00000000, 0x00000000, 0x00060000}},  // 4294.967295
+    {{0xFFFFFFFF, 0xFFFFFFFF, 0x00000000,
+      0x00050000}},  // 184467440737095.51615
+    {{0xFFFFFFFF, 0x00000000, 0x00000000, 0x80060000}},  // -4294.967295
+    {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+      0x001C0000}},  // 7.9228162514264337593543950335
+    {{0xFFFFFFFF, 0xFFFFFFFF, 0x00000000,
+      0x80050000}},  // -184467440737095.51615
+    {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+      0x801C0000}},  // -7.9228162514264337593543950335
+};
+
+  s21_decimal result[] = {
+    {{0x00000000, 0x00000000, 0x00000000, 0x00000000}},  // 0
+    {{0x00000001, 0x00000000, 0x00000000, 0x00000000}},  // 1
+    {{0x00000001, 0x00000000, 0x00000000, 0x80000000}},  //-1
+    {{0x8178F63A, 0x00000000, 0x00000000, 0x00000000}},  // 2172188218
+    {{0x00214ABD, 0x00000000, 0x00000000, 0x80000000}},  //-2181821
+    {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+      0x00000000}},  // 79228162514264337593543950335
+    {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+      0x80000000}},  //-79228162514264337593543950335
+    {{0x00000000, 0x00000000, 0x00000000, 0x00000000}},  // 0
+    {{0x00002710, 0x00000000, 0x00000000, 0x00000000}},  // 10000
+    {{0x00002710, 0x00000000, 0x00000000, 0x80000000}},  //-10000
+    {{0x031F8A09, 0x00000000, 0x00000000, 0x00000000}},  // 52398601
+    {{0x00000467, 0x0000007A, 0x00000000, 0x80000000}},  //-523986011239
+    {{0xCCCCCD3D, 0x199999A5, 0x00000502,
+      0x00000000}},  // 23650570576955414727997
+    {{0xBD70A3E2, 0x1EB851EC, 0x000052E1,
+      0x80000000}},  //-391386782621189641642978
+    {{0xB333333D, 0x19999999, 0x00000000, 0x80000000}},
+    //-1844674407800451901
+    {{0x0000000E, 0x00000000, 0x00000000, 0x00000000}},  // 14
+    {{0x0000000F, 0x00000000, 0x00000000, 0x80000000}},  //-15
+    {{0x000186A0, 0x00000000, 0x00000000, 0x00000000}},  // 100000
+    {{0x00000001, 0x00000000, 0x00000000, 0x00000000}},  // 1
+    {{0x00000001, 0x00000000, 0x00000000, 0x80000000}},  //-1
+    {{0x00000001, 0x00000000, 0x00000000, 0x80000000}},  //-1
+    {{0x00000001, 0x00000000, 0x00000000, 0x00000000}},  // 1
+    {{0x00000001, 0x00000000, 0x00000000, 0x80000000}},  //-1
+    {{0x00000001, 0x00000000, 0x00000000, 0x00000000}},  // 1
+    {{0x00000001, 0x00000000, 0x00000000, 0x00000000}},  // 1
+    {{0x00000001, 0x00000000, 0x00000000, 0x80000000}},  //-1
+    {{0x00000002, 0x00000000, 0x00000000, 0x00000000}},  // 2
+    {{0x00000002, 0x00000000, 0x00000000, 0x80000000}},  //-2
+    {{0x24285C43, 0x01B2140C, 0x00000000, 0x00000000}},  // 122182182271212611
+    {{0x24285C43, 0x01B2140C, 0x00000000, 0x00000000}},  // 122182182271212611
+    {{0x24285C43, 0x01B2140C, 0x00000000, 0x80000000}},  //-122182182271212611
+    {{0x24285C43, 0x01B2140C, 0x00000000, 0x80000000}},  //-122182182271212611
+    {{0x0001E240, 0x00000000, 0x00000000, 0x00000000}},  // 123456
+    {{0x00000000, 0x00000000, 0x00000000, 0x00000000}},  // 0
+    {{0x00000000, 0x00000000, 0x00000000, 0x00000000}},  // 0
+    {{0x00000000, 0x00000000, 0x00000000, 0x00000000}},  // 0
+    {{0x000010C6, 0x00000000, 0x00000000, 0x00000000}},  // 4294
+    {{0xAC471B47, 0x0000A7C5, 0x00000000, 0x00000000}},  // 184467440737095
+    {{0x000010C6, 0x00000000, 0x00000000, 0x80000000}},  //-4294
+    {{0x00000007, 0x00000000, 0x00000000, 0x00000000}},  // 7
+    {{0xAC471B47, 0x0000A7C5, 0x00000000, 0x80000000}},  //-184467440737095
+    {{0x00000007, 0x00000000, 0x00000000, 0x80000000}},  //-7
+};
+  for (size_t i = 0; i < sizeof(arr) / sizeof(s21_decimal); ++i) {
+    s21_decimal tmp;
+    int ret = s21_truncate(arr[i], &tmp);
+    ck_assert_int_eq(tmp.bits[0], result[i].bits[0]);
+    ck_assert_int_eq(tmp.bits[1], result[i].bits[1]);
+    ck_assert_int_eq(tmp.bits[2], result[i].bits[2]);
+    ck_assert_int_eq(tmp.bits[3], result[i].bits[3]);
+    ck_assert_int_eq(ret, 0);
+  }
+
+#test s21_truncate_2
+  s21_decimal a = {{0xf535e9f0, 0x000e5ab9, 0x00000000, 0x801c0000}};
+  s21_decimal *res = NULL;
+  int s21_ret = s21_truncate(a, res);
+  int expected_ret = 1;
+  ck_assert_int_eq(s21_ret, expected_ret);

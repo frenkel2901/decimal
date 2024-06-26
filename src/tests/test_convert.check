@@ -1,0 +1,285 @@
+// -------- int ----------
+#suite s21_convert_test
+
+#test int_to_dec1
+s21_decimal dec;
+int value = -1234567;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test int_to_dec2
+s21_decimal dec;
+int value = 1234567;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test int_to_dec3
+s21_decimal dec;
+int value = 1234.567;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test int_to_dec4
+s21_decimal dec;
+int value = -1234.567;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test int_to_dec6
+s21_decimal dec;
+int value = INT32_MAX;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test int_to_dec7
+s21_decimal dec;
+int value = INT32_MIN;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test int_to_dec8
+s21_decimal dec;
+int value = -1234567;
+s21_set_scale(&dec.bits[3], 10);
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test int_to_dec11
+int value = 7922;
+s21_decimal dec = {{0xffffffff, 0xffffffff, 0xffffffff, 0x00000000}};
+s21_set_scale(&dec.bits[3], 25);
+int dst;
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test int_to_dec12
+s21_decimal dec;
+int value = 0;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test int_to_dec13
+s21_decimal dec;
+int value = -0;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test int_to_dec9
+s21_decimal dec;
+int value = INT32_MIN;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_set_sign(&dec.bits[3], 0);
+ck_assert_int_eq(1, s21_from_decimal_to_int(dec, &dst));
+
+#test int_to_dec14
+s21_decimal dec;
+int value = 1e-06;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test int_to_dec15
+s21_decimal dec = {{0xffffffff, 0xffffffff, 0xffffffff, 0x00000000}};
+int dst;
+ck_assert_int_eq(1, s21_from_decimal_to_int(dec, &dst));
+
+#test int_to_dec16
+s21_decimal dec = {{0xffffffff, 0x00000000, 0xffffffff, 0x00000000}};
+int dst;
+ck_assert_int_eq(1, s21_from_decimal_to_int(dec, &dst));
+
+#test int_to_dec17
+s21_decimal dec = {{0xffffffff, 0xffffffff, 0x00000000, 0x00000000}};
+int dst;
+ck_assert_int_eq(1, s21_from_decimal_to_int(dec, &dst));
+
+#test int_to_dec18
+s21_decimal dec = {{0xffffffff, 0x00000000, 0x00000000, 0x00000000}};
+s21_set_sign(&dec.bits[3], 1);
+int dst;
+ck_assert_int_eq(1, s21_from_decimal_to_int(dec, &dst));
+
+#test s21_from_decimal_to_int_test1
+s21_decimal dec = {{0xffffffff, 0xffffffff, 0xffffffff, 0x00000000}};
+int *value = NULL;
+ck_assert_ptr_eq(value, NULL);
+ck_assert_int_eq(s21_from_decimal_to_int(dec, value), 1);
+
+
+// -------- float ----------
+
+#test float_to_dec1
+s21_decimal dec;
+float value = -1234567;
+float dst;
+s21_from_float_to_decimal(value, &dec);
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq(value, dst);
+
+#test float_to_dec2
+s21_decimal dec;
+float value = 1234567;
+float dst;
+s21_from_float_to_decimal(value, &dec);
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq(value, dst);
+
+#test float_to_dec3
+s21_decimal dec;
+float value = 1234.567;
+float dst;
+s21_from_float_to_decimal(value, &dec);
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq(value, dst);
+
+#test float_to_dec4
+s21_decimal dec;
+float value = -1234.567;
+float dst;
+s21_from_float_to_decimal(value, &dec);
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq(value, dst);
+
+#test float_to_dec6
+s21_decimal dec;
+float value = (float)INT32_MAX;
+float dst;
+s21_from_float_to_decimal(value, &dec);
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq_tol(value, dst, s21_max(fabs(value), fabs(dst)) * S21_EPS);
+
+#test float_to_dec7
+s21_decimal dec;
+float value = (float)INT32_MIN;
+float dst;
+s21_from_float_to_decimal(value, &dec);
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq_tol(value, dst, s21_max(fabs(value), fabs(dst)) * S21_EPS);
+
+#test float_to_dec8
+s21_decimal dec;
+float value = -1234567;
+s21_set_scale(&dec.bits[3], 10);
+float dst;
+s21_from_float_to_decimal(value, &dec);
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq(value, dst);
+
+#test float_to_dec11
+float value = 7922.816406;
+s21_decimal dec = {{0xffffffff, 0xffffffff, 0xffffffff, 0x00000000}};
+s21_set_scale(&dec.bits[3], 25);
+float dst;
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq(value, dst);
+
+#test float_to_dec12
+s21_decimal dec;
+float value = 0;
+float dst;
+s21_from_float_to_decimal(value, &dec);
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq(value, dst);
+
+#test float_to_dec13
+s21_decimal dec;
+float value = -0;
+float dst;
+s21_from_float_to_decimal(value, &dec);
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq(value, dst);
+
+#test float_to_dec14
+s21_decimal dec;
+float value = 1e-06;
+float dst;
+s21_from_float_to_decimal(value, &dec);
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq(value, dst);
+
+#test float_to_dec15
+s21_decimal dec;
+float value = NAN;
+s21_from_float_to_decimal(value, &dec);
+ck_assert_int_eq(s21_from_float_to_decimal(value, &dec), 1);
+
+#test float_to_dec16
+s21_decimal dec;
+float value = pow(2, 100);
+s21_from_float_to_decimal(value, &dec);
+ck_assert_int_eq(s21_from_float_to_decimal(value, &dec), 1);
+
+#test float_to_dec17
+s21_decimal dec;
+float value = INFINITY;
+s21_from_float_to_decimal(value, &dec);
+ck_assert_int_eq(s21_from_float_to_decimal(value, &dec), 1);
+
+#test float_to_dec18
+s21_decimal dec;
+float value = -INFINITY;
+s21_from_float_to_decimal(value, &dec);
+ck_assert_int_eq(s21_from_float_to_decimal(value, &dec), 1);
+
+#test float_to_dec19
+s21_decimal dec;
+float value = -NAN;
+s21_from_float_to_decimal(value, &dec);
+ck_assert_int_eq(s21_from_float_to_decimal(value, &dec), 1);
+
+#test s21_from_decimal_to_float_test1
+s21_decimal dec = {{0xffffffff, 0xffffffff, 0xffffffff, 0x00000000}};
+float *value = NULL;
+ck_assert_ptr_eq(value, NULL);
+ck_assert_int_eq(s21_from_decimal_to_float(dec, value), 1);
+
+#test ss21_from_decimal_to_float2
+float value = 123.45;
+s21_decimal *dec = NULL;
+ck_assert_int_eq(s21_from_float_to_decimal(value, dec), 1);
+
+#test s21_from_int_to_decimal_test2
+int value = 12345;
+s21_decimal *dec = NULL;
+ck_assert_int_eq(s21_from_int_to_decimal(value, dec), 1);
+
+#test float_to_dec21
+float value = 7.92282e-12;
+s21_decimal dec = {{0xffffffff, 0xffffffff, 0xffffffff, 0x00000000}};
+s21_set_scale(&dec.bits[3], 40);
+float dst;
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq_tol(value, dst, s21_max(fabs(value), fabs(dst)) * S21_EPS);
+
+#test float_to_dec22
+float value = 1e-29;
+s21_decimal dec;
+ck_assert_int_eq(s21_from_float_to_decimal(value, &dec), 1);
+
+#test float_to_dec23
+float value = 1.23e-27;
+s21_decimal dec;
+float dst;
+s21_from_float_to_decimal(value, &dec);
+s21_from_decimal_to_float(dec, &dst);
+ck_assert_float_eq(value, dst);

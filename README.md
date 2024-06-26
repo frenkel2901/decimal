@@ -1,5 +1,8 @@
 # decimal
 
+
+Made in team with https://github.com/Virus3908
+
 school project decimal
 
 
